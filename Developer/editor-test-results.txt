@@ -1,0 +1,1 @@
+PASS: actual pointer drag, southeast resize, pointer cancellation, keyboard nudge, view-only non-interaction, letterbox mapping, high-DPI canvas, and production outline rendering. Native browser event delivery and live capture remain untested.

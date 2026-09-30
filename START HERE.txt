@@ -1,60 +1,51 @@
-CARDVISION COUNTER — START HERE
+CARDVISION COUNTER — LIVE OUTLINE UPDATE 2.1.0-dev.3
 
+Extract the whole ZIP. Keep the folders together.
 
 WINDOWS
-=======
-
-First time:
-
-1. Open the "Windows" folder.
-2. Double-click:
-
-   1 - SETUP CARDVISION.bat
-
-3. If Node.js is missing, the download page will open.
-4. Install Node.js LTS.
-5. Run the setup file again.
-
-After setup, use the BLACK / GOLD poker-chip:
-
-   CardVision Counter
-
-on your Desktop.
-
+First time: Windows → 1 - SETUP CARDVISION.bat
+Then use the black/gold CardVision Counter Dev desktop icon.
+Backup: Windows → 2 - START CARDVISION.bat
 
 MAC
-===
+First time: Mac → 1 - SETUP CARDVISION.command
+Then open Mac → CardVision Counter.app (black/silver chip).
+Backup: Mac → 2 - START CARDVISION.command
 
-First time:
+USING IT
+1. Save your rules and your seat in Settings.
+2. Choose the SportsBetting browser window and click Connect.
+3. Scanning starts. Wait for TABLE: AUTO-ALIGNED.
+4. It finds the dealer, player areas, active-seat panel and totals automatically.
 
-1. Open the "Mac" folder.
-2. Double-click:
+LIVE FEED OUTLINES
+5. The feed shows where it is looking for cards and totals.
+6. Click Edit outlines. Drag a box to move it; drag its white handles to resize.
+7. Use the outline menu to select tiny totals. Click Done editing to save.
+Video stays live while you edit; scanning pauses, then returns to its prior state.
+Your changes follow automatic alignment. Reset selected/all restores defaults.
 
-   1 - SETUP CARDVISION.command
+HITS AND SPLITS
+Hits can extend the card crop into nearby space. Red means clipping/overlap: adjust it.
+Two split stacks get separate hands and totals, without recounting the original pair.
+If needed, drag each pink split-total box onto that hand's total badge.
+Manual fallback: select the seat in Manual Correction and enter 8 3 / 8 K.
+Unclear splits or more than two split hands stay under review.
 
-3. If Node.js is missing, the download page will open.
-4. Install Node.js LTS.
-5. Run the setup file again.
+NO calibration boxes are required to get started.
+NO round number required.
+NO shuffle region required.
 
-After setup, use:
+Find table again retries automatic alignment.
+Pause scanning stops reading without clearing the count.
+New hands are detected when a visible table clears, then cards reappear.
+New shoe still resets the shoe count manually when an actual new shoe starts.
+Next hand remains a fallback if the clear-table interval was missed.
 
-   CardVision Counter.app
+TEST IT WITHOUT A LIVE GAME
+Click Test screenshot and select Developer/fixtures/actual-table.png.
+The app aligns and scans automatically. Expected: six unique cards, RC -2.
 
-Look for the BLACK / SILVER poker-chip icon.
-
-If macOS blocks it, right-click the app and choose Open.
-
-
-HAVING TROUBLE?
-===============
-
-Open README.md in the main CardVision folder.
-
-It includes help for setup, Node.js, npm, icons, Windows, and Mac problems.
-
-
-IMPORTANT
-=========
-
-Keep the entire CardVision folder together.
-Do not move individual files out of it.
+Preview: Developer/previews/CardVision-Interface-Preview.html
+Details: README.md
+This is a development source build; no standalone EXE/DMG is included.

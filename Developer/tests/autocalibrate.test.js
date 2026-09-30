@@ -1,0 +1,12 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const {Stabilizer,HandCycle}=require('../../App/lib/autocalibrate');
+const loc=(x=147,y=480,scale=1)=>({found:true,anchor:{x,y,scale}});
+test('Auto alignment needs two consistent visual anchors',()=>{const a=new Stabilizer();assert.equal(a.update(loc()).ready,false);assert.equal(a.update(loc()).ready,true);});
+test('Resizing invalidates the old calibration until stable',()=>{const a=new Stabilizer();a.update(loc());a.update(loc());assert.equal(a.update(loc(200,500,1.2)).ready,false);assert.equal(a.update(loc(200,500,1.2)).ready,true);});
+test('Missing table invalidates alignment',()=>{const a=new Stabilizer();a.update(loc());a.update(loc());assert.equal(a.update({found:false}).ready,false);assert.equal(a.update(loc()).ready,false);});
+const update=(c,cards,now,tableVisible=true)=>c.update({tableVisible,cardRegions:cards,now});
+test('Initial empty table does not invent a new hand',()=>{const c=new HandCycle();update(c,0,0);update(c,0,2000);assert.equal(update(c,2,2500),'cards');});
+test('Short empty animation does not split one hand into two',()=>{const c=new HandCycle();update(c,3,0);update(c,0,500);update(c,0,850);assert.equal(update(c,3,1000),'cards');});
+test('Sustained clear table starts next hand once without an ID',()=>{const c=new HandCycle();update(c,3,0);update(c,0,500);update(c,0,1250);assert.equal(update(c,0,2050),'cleared');assert.equal(update(c,3,2400),'new-hand');assert.equal(update(c,3,3000),'cards');});
+test('Capture loss is not a clear-table observation',()=>{const c=new HandCycle();update(c,3,0);update(c,0,500,false);update(c,0,2200,false);assert.equal(update(c,3,3000),'cards');});
+test('Interrupted empty interval must be confirmed again',()=>{const c=new HandCycle();update(c,2,0);update(c,0,300);update(c,0,900);update(c,0,2000,false);update(c,0,2300);assert.equal(update(c,2,2400),'cards');});

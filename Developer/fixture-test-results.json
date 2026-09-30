@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "reference": "actual-table.png (template training fixture)",
+  "cards": 6,
+  "runningCount": -2,
+  "seat4": "A Q 3 = 14 VERIFIED",
+  "seat3": "Q 9 = 19 VERIFIED",
+  "dealer": "8",
+  "activePanel": "A Q 3; no double count",
+  "blank": "no cards",
+  "elapsedMs": 249,
+  "ocrFallbackRequests": 1,
+  "note": "OCR fallback intentionally returns no read; this test validates templates, segmentation and count integration on their reference fixture, not OCR or live speed."
+}

@@ -13,8 +13,12 @@ if errorlevel 1 (
 )
 
 cd /d "%APPDIR%"
-if not exist node_modules call npm install
+if not exist node_modules (
+  call npm ci
+  if errorlevel 1 exit /b 1
+)
 call npx electron-builder --win portable
+if errorlevel 1 exit /b 1
 echo.
 echo Build output is in:
 echo   %ROOT%\Build Output

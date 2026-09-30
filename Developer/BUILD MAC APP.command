@@ -11,8 +11,8 @@ if ! command -v node >/dev/null 2>&1; then
 fi
 
 cd "$APPDIR"
-[ -d node_modules ] || npm install
-npx electron-builder --mac dmg
+if [ ! -d node_modules ]; then npm ci || exit 1; fi
+npx electron-builder --mac dmg || exit 1
 echo
 echo "Build output is in:"
 echo "  $ROOT/Build Output"

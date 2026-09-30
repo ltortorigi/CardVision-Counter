@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "checks": 8,
+  "original": "automatic alignment and six unique cards; RC -2",
+  "transforms": "0.75x, 1x, 1.25x, 1.5x plus translated/padded captures",
+  "userScreenshot": "dealer and occupied seats 2/5 inside automatically aligned regions; no manual rectangles",
+  "blank": "rejected",
+  "unsupportedFourSeat": "rejected",
+  "note": "Screenshot alignment regression checks, not live desktop or broad recognition accuracy tests."
+}

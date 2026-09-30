@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>CardVision Counter</string>
+	<string>CardVision Counter Dev</string>
 	<key>CFBundleExecutable</key>
 	<string>CardVision Counter</string>
 	<key>CFBundleIconFile</key>
 	<string>CardVisionMac.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.cardvision.counter.launcher.mac</string>
+	<string>com.cardvision.counter.dev.launcher</string>
 	<key>CFBundleName</key>
 	<string>CardVision Counter</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>2.1.0</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.13</string>
 	<key>NSHighResolutionCapable</key>

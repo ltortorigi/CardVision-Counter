@@ -1,0 +1,1 @@
+PASS: real raster expansion beyond original outline, clipped-edge hold, overlapping-seat hold, retained table lock, two synthetic Q/9 stacks with independent 19 totals, pair migration to four cards without duplication, and independent draggable split-total overrides. No live split footage or OCR fallback validation.

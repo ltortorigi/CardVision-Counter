@@ -44,19 +44,12 @@ echo Node.js detected.
 echo.
 cd /d "%APPDIR%"
 
-if not exist "node_modules" (
-    echo Installing CardVision dependencies...
-    echo This is normally only needed once.
-    call npm install
-    if errorlevel 1 (
-        echo.
-        echo Installation failed.
-        echo Check your internet connection and try again.
-        pause
-        exit /b 1
-    )
-) else (
-    echo CardVision dependencies are already installed.
+echo Installing the locked CardVision dependencies...
+call npm ci
+if errorlevel 1 (
+    echo Installation failed. Check your internet connection and Node.js installation.
+    pause
+    exit /b 1
 )
 
 echo.
@@ -78,7 +71,7 @@ echo =====================================================
 echo.
 echo Look on your DESKTOP for:
 echo.
-echo       CardVision Counter
+echo       CardVision Counter Dev
 echo.
 echo It will have the BLACK / GOLD poker-chip icon.
 echo Double-click that icon whenever you want to start the app.

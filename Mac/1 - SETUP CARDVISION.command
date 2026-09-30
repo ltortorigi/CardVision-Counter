@@ -39,17 +39,12 @@ fi
 
 cd "$APPDIR"
 
-if [ ! -d node_modules ]; then
-  echo "Installing CardVision dependencies..."
-  echo "This is normally only needed once."
-  npm install || {
-    echo "Installation failed. Check your internet connection and try again."
-    read -r -p "Press Return to close..."
-    exit 1
-  }
-else
-  echo "CardVision dependencies are already installed."
-fi
+echo "Installing the locked CardVision dependencies..."
+npm ci || {
+  echo "Installation failed. Check your internet connection and Node.js installation."
+  read -r -p "Press Return to close..."
+  exit 1
+}
 
 echo
 echo "====================================================="

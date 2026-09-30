@@ -5,8 +5,8 @@ $Root = Split-Path -Parent $WindowsFolder
 $Target = Join-Path $WindowsFolder "2 - START CARDVISION.bat"
 $Icon = Join-Path $Root "App\assets\windows_chip.ico"
 $Desktop = [Environment]::GetFolderPath("Desktop")
-$FolderShortcut = Join-Path $WindowsFolder "CardVision Counter.lnk"
-$DesktopShortcut = Join-Path $Desktop "CardVision Counter.lnk"
+$FolderShortcut = Join-Path $WindowsFolder "CardVision Counter Dev.lnk"
+$DesktopShortcut = Join-Path $Desktop "CardVision Counter Dev.lnk"
 
 $Shell = New-Object -ComObject WScript.Shell
 

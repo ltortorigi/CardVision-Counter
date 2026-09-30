@@ -1,0 +1,3 @@
+PASS: renderer edit/apply/cancel retains count, preserves saved offsets after automatic realignment, and does not discard adjustments.
+PASS: actual scanOnce automatically aligns an uncalibrated profile and counts six unique fixture cards in three scans.
+PASS: real renderer initialization, element IDs, setup dialog, selected recommendation, JSON export and undo using DOM stubs. No browser/layout or Electron IPC validation.

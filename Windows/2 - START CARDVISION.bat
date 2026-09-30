@@ -32,10 +32,10 @@ cd /d "%APPDIR%"
 
 if not exist "node_modules" (
     echo Installing CardVision files for first use...
-    call npm install
+    call npm ci
     if errorlevel 1 (
         echo.
-        echo npm install failed. Check your internet connection and try again.
+        echo npm ci failed. Check your internet connection and try again.
         pause
         exit /b 1
     )

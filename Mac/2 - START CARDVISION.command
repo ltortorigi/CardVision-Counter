@@ -28,7 +28,7 @@ cd "$APPDIR"
 
 if [ ! -d node_modules ]; then
   echo "Installing CardVision files for first use..."
-  npm install || {
+  npm ci || {
     echo "Installation failed. Check your internet connection and try again."
     read -r -p "Press Return to close..."
     exit 1
