@@ -1,0 +1,60 @@
+CARDVISION COUNTER — START HERE
+
+
+WINDOWS
+=======
+
+First time:
+
+1. Open the "Windows" folder.
+2. Double-click:
+
+   1 - SETUP CARDVISION.bat
+
+3. If Node.js is missing, the download page will open.
+4. Install Node.js LTS.
+5. Run the setup file again.
+
+After setup, use the BLACK / GOLD poker-chip:
+
+   CardVision Counter
+
+on your Desktop.
+
+
+MAC
+===
+
+First time:
+
+1. Open the "Mac" folder.
+2. Double-click:
+
+   1 - SETUP CARDVISION.command
+
+3. If Node.js is missing, the download page will open.
+4. Install Node.js LTS.
+5. Run the setup file again.
+
+After setup, use:
+
+   CardVision Counter.app
+
+Look for the BLACK / SILVER poker-chip icon.
+
+If macOS blocks it, right-click the app and choose Open.
+
+
+HAVING TROUBLE?
+===============
+
+Open README.md in the main CardVision folder.
+
+It includes help for setup, Node.js, npm, icons, Windows, and Mac problems.
+
+
+IMPORTANT
+=========
+
+Keep the entire CardVision folder together.
+Do not move individual files out of it.

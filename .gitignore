@@ -1,0 +1,7 @@
+App/node_modules/
+
+Build Output/*
+!Build Output/.gitkeep
+
+.DS_Store
+*.log

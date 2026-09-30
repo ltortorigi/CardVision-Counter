@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>CardVision Counter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">CV</div>
+      <div>
+        <h1>CardVision Counter</h1>
+        <p>SportsBetting layout • Hi-Lo: 2–6 = +1 • 7–9 = 0 • 10–A = −1</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <label>Decks
+        <select id="deckCount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="6" selected>6</option>
+          <option value="8">8</option>
+        </select>
+      </label>
+      <button id="newShoeBtn" class="danger">New Shoe</button>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div><span>RUNNING</span><b id="runningCount">0</b></div>
+    <div class="accent"><span>TRUE COUNT</span><b id="trueCount">0.0</b></div>
+    <div><span>CARDS SEEN</span><b id="cardsSeen">0</b></div>
+    <div><span>DECKS LEFT</span><b id="decksLeft">6.0</b></div>
+    <div id="betStat" class="bet-stat"><span>NEXT BET</span><b id="betSignal">MIN</b></div>
+  </section>
+
+  <main class="workspace">
+    <section class="left-column">
+      <div class="panel live-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Live Game</h2>
+            <p id="scanStatus">Choose the Chrome/game window.</p>
+          </div>
+          <div class="capture-controls">
+            <select id="sourceSelect"></select>
+            <button id="refreshSourcesBtn">Refresh</button>
+            <button id="shareBtn" class="primary">Connect</button>
+            <button id="autoScanBtn" class="primary" disabled>Start Scan</button>
+          </div>
+        </div>
+
+        <div class="video-wrap">
+          <video id="screenVideo" autoplay muted playsinline></video>
+          <canvas id="overlayCanvas"></canvas>
+          <div id="screenPlaceholder" class="placeholder">The captured game window will appear here.</div>
+        </div>
+
+        <div class="scan-strip">
+          <span>Detector <b id="detectorState">idle</b></span>
+          <span>OCR <b id="ocrState">warming</b></span>
+          <span>Hands <b id="detectedHands">0</b></span>
+          <span>Last scan <b id="lastScan">—</b></span>
+        </div>
+      </div>
+
+      <div class="panel history-panel">
+        <div class="history-title">
+          <div><h2>Cards Played</h2><p>Rank totals + most recent cards</p></div>
+          <div id="rankCounts" class="rank-counts"></div>
+        </div>
+        <div id="historyCards" class="mini-history"></div>
+      </div>
+    </section>
+
+    <section class="right-column">
+      <div class="panel move-panel">
+        <div class="move-top">
+          <div>
+            <span class="eyebrow">MY MOVE</span>
+            <strong id="recommendedMove">WAITING</strong>
+            <p id="recommendationReason">Select which detected player is you.</p>
+            <span id="strategyMode" class="strategy-mode">Basic strategy</span>
+          </div>
+          <div class="seat-picker">
+            <label class="me-label">MY PLAYER
+              <select id="mySeat">
+                <option value="1" selected>Player 1</option>
+                <option value="2">Player 2</option>
+                <option value="3">Player 3</option>
+                <option value="4">Player 4</option>
+                <option value="5">Player 5</option>
+                <option value="6">Player 6</option>
+                <option value="7">Player 7</option>
+              </select>
+            </label>
+            <label>S17/H17
+              <select id="soft17Rule">
+                <option value="S17">S17</option>
+                <option value="H17" selected>H17</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="move-context">
+          <span>Your hand <b id="strategyHand">—</b></span>
+          <span>Dealer <b id="strategyDealer">—</b></span>
+        </div>
+        <div class="bet-advice">
+          <div><span class="eyebrow">BEFORE NEXT HAND</span><strong id="betAdvice">Minimum bet</strong><p id="betReason">True count is below +1.</p></div>
+          <div class="bet-units"><span>Suggested</span><b id="betUnits">1 unit</b></div>
+        </div>
+      </div>
+
+      <div class="panel hands-panel">
+        <div class="hands-head">
+          <div>
+            <h2>Table Hands</h2>
+            <p>All 7 players stay visible. Click a player to mark that seat as YOU.</p>
+          </div>
+          <div class="you-indicator">YOU: <b id="youSeatLabel">Player 1</b></div>
+        </div>
+
+        <div class="dealer-row">
+          <div class="hand-label">
+            <span>DEALER NOW</span>
+            <b id="dealerTotal">0</b>
+          </div>
+          <div id="dealerCards" class="cards compact"></div>
+        </div>
+
+        <div id="playersGrid" class="players-grid"></div>
+
+        <div class="dealer-history">
+          <div class="dealer-history-head">
+            <div>
+              <h3>Dealer Hand History</h3>
+              <span>Most recent completed dealer hands</span>
+            </div>
+            <button id="clearDealerHistoryBtn" type="button">Clear</button>
+          </div>
+          <div id="dealerHistoryList" class="dealer-history-list">
+            <span class="empty">No completed dealer hands yet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel correction-panel">
+        <div class="correction-head">
+          <div>
+            <h2>Quick Correction</h2>
+            <p id="activeTargetLabel">Target: Player 1</p>
+          </div>
+          <div class="target-select">
+            <label>Target
+              <select id="targetSelect">
+                <option value="dealer">Dealer</option>
+                <option value="player1" selected>Player 1</option>
+                <option value="player2">Player 2</option>
+                <option value="player3">Player 3</option>
+                <option value="player4">Player 4</option>
+                <option value="player5">Player 5</option>
+                <option value="player6">Player 6</option>
+                <option value="player7">Player 7</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div id="rankButtons" class="rank-buttons"></div>
+        <div class="correction-bottom">
+          <div id="suitButtons" class="suit-buttons">
+            <button data-suit="♥" class="red">♥</button>
+            <button data-suit="♦" class="red">♦</button>
+            <button data-suit="♣">♣</button>
+            <button data-suit="♠">♠</button>
+            <button data-suit="?">?</button>
+          </div>
+          <button id="undoBtn">Undo</button>
+          <button id="clearHandBtn">Clear Hand</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appNotice" class="notice">Recognition is tuned to the SportsBetting screen you sent. Only white playing-card regions are scanned, so UI numbers should no longer be counted as cards.</div>
+
+  <canvas id="captureCanvas" hidden></canvas>
+</div>
+<script src="renderer.js"></script>
+</body>
+</html>

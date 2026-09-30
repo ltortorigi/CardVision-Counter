@@ -1,0 +1,46 @@
+{
+  "name": "cardvision-counter",
+  "version": "2.0.0",
+  "description": "CardVision Counter \u2014 organized cross-platform desktop blackjack assistant with guided Windows/macOS setup.",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist": "electron-builder",
+    "dist:win:portable": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "tesseract.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.cardvision.counter",
+    "productName": "CardVision Counter",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "renderer.js",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "../Build Output",
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/windows_chip.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities",
+      "icon": "assets/mac_chip.icns"
+    }
+  }
+}
